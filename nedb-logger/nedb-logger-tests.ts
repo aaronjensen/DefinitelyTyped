@@ -4,24 +4,20 @@
 
 /// <reference types="node" />
 
-
 import * as es6styleimport from 'nedb-logger';
 
 import Q = require('q');
 import nedblogger = require('nedb-logger');
 
 class BaseCollection<T> {
-
     private dataStore: nedblogger;
 
     constructor(dataStore: nedblogger) {
-
         this.dataStore = dataStore;
     }
 
     insert(document: T): Q.Promise<T> {
-
-        var deferred = Q.defer<T>();
+        const deferred = Q.defer<T>();
 
         this.dataStore.insert<T>(document, function(err: Error, newDoc: T) {   // Callback is optional
             // newDoc is the newly inserted document, including its _id
@@ -34,15 +30,14 @@ class BaseCollection<T> {
 
         return deferred.promise;
     }
-
 }
 
 // Type 1: Persistent datastore with manual loading
 
 import Datastore = require('nedb-logger');
-var db = new Datastore({filename: 'path/to/datafile'});
+const db = new Datastore({filename: 'path/to/datafile'});
 
-var doc: any = {
+const doc: any = {
     hello: 'world'
     , n: 5
     , today: new Date()
