@@ -82,7 +82,7 @@ class MySimple extends jspb.Message {
   };
 
   static serializeBinaryToWriter(message: MySimple, writer: jspb.BinaryWriter) {
-    let f1 = message.getMyString();
+    const f1 = message.getMyString();
     if (f1.length > 0) {
       writer.writeString(
         1,
@@ -122,7 +122,7 @@ class MySimple extends jspb.Message {
   }
 
   getSomeLabelsList(): string[] {
-    return jspb.Message.getField(this, 3);
+    return jspb.Message.getField(this, 3) as string[];
   }
 
   setSomeLabelsList(value: string[]) {
